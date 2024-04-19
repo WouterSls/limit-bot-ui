@@ -9,7 +9,7 @@ export const headerData: HeaderDataInterface = {
   siteId: `Coin<span className="text-green-500">Liquidator</span>`,
   mainCTAButton: {
     link: "/login",
-    text: "Login",
+    text: "Sign In",
   },
 
   headerButton1: {

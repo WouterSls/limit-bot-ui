@@ -1,11 +1,17 @@
 "use client";
-import React, { useState, ChangeEvent, FormEvent } from "react";
+import React, { useEffect, useState, ChangeEvent, FormEvent } from "react";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/contexts/AuthContext";
+import { useToast } from "../ui/use-toast";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
+  const router = useRouter();
+  const { login } = useAuth();
+  const { toast } = useToast();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -14,17 +20,15 @@ const Login = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await fetch("/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
-      console.log(data);
+      await login(formData.email, formData.password);
+      router.push("/landing");
     } catch (error) {
-      console.error("Error:", error);
+      console.error(error);
+      toast({
+        title: "Error",
+        description: "Invalid email or password. Please try again.",
+        variant: "destructive",
+      });
     }
   };
 

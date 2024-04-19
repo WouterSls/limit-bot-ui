@@ -4,6 +4,14 @@ import type { Metadata } from "next";
 import { cn } from "@/lib/utils";
 import { Button, buttonVariants } from "@/components/ui/button";
 import MaxWidthWrapper from "@/components/Elements/MaxWidthWrapper";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +24,20 @@ const DashboardLayout = ({
   return (
     <main>
       <MaxWidthWrapper>
-        <div className="min-h-[40svh] grid grid-cols-12 gap-4 mt-20">
+        <nav>
+          <Breadcrumb>
+            <BreadcrumbList className="text-6xl my-20">
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/landing">Your Bots</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>BotName</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+        </nav>
+        <div className="min-h-[40svh] grid grid-cols-12 gap-4">
           <div className="col-span-2 flex flex-col gap-6 bg-gray-200">
             <Link
               href={"/dashboard/overview"}

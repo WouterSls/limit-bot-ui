@@ -32,13 +32,13 @@ const HeroSection: React.FC<HeroProps> = ({ heroProps }) => {
           href={heroProps.button1.link}
           className={cn(buttonVariants({ variant: "default" }), "w-32")}
         >
-          {heroProps.button1.text}
+          Get Started
         </Link>
         <Link
           href={heroProps.button2.link}
           className={cn(buttonVariants({ variant: "outline" }), "w-32")}
         >
-          {heroProps.button2.text}
+          Register
         </Link>
       </div>
     </>
