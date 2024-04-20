@@ -6,6 +6,16 @@ import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
 import { Megrim } from "next/font/google";
 import { headerData } from "@/config/headerData";
+import { LogOut, Settings, User, CreditCard, CircleHelp } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const mergrim = Megrim({ subsets: ["latin"], weight: ["400"] });
 
@@ -27,25 +37,55 @@ const AuthenticatedHeader = () => {
           {/**middle navbar */}
           <div className="col-span-1 "></div>
           {/**right navbar */}
-          <div className="col-span-1 flex flex-row items-center space-x-4 mx-auto">
-            <Link
-              href={headerData.headerButton1.link}
-              className={buttonVariants({
-                variant: "ghost",
-                size: "default",
-              })}
-            >
-              {headerData.headerButton1.text}
-            </Link>
-            <Link
-              href={headerData.headerButton1.link}
-              className={buttonVariants({
-                variant: "ghost",
-                size: "default",
-              })}
-            >
-              Settings
-            </Link>
+          <div className="col-span-1 flex flex-row items-center justify-end space-x-4">
+            <div className="group">
+              <Link
+                href={headerData.headerButton1.link}
+                className={buttonVariants({
+                  variant: "ghost",
+                  size: "default",
+                })}
+              >
+                <CircleHelp className="mr-2 text-gray-500 group-hover:text-black"></CircleHelp>
+                <span className="text-gray-500 group-hover:text-black">
+                  {headerData.headerButton1.text}
+                </span>
+              </Link>
+            </div>
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <Avatar>
+                  <AvatarImage
+                    src="https://github.com/shadcn.png"
+                    alt="@shadcn"
+                  />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <CreditCard className="mr-2 h-4 w-4" />
+                  <span>Pricing</span>
+                </DropdownMenuItem>
+                {/** 
+                <DropdownMenuItem>
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                </DropdownMenuItem>
+*/}
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </MaxWidthWrapper>
