@@ -15,6 +15,7 @@ const BotCard: React.FC<BotProps> = ({ botName, botColor }) => {
           <div className="p-6 text-white">
             <h2 className="text-2xl text-white">{botName}</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            {/** description might not be needed but add up & uptime information with minimal network tag */}
           </div>
         </div>
       </div>

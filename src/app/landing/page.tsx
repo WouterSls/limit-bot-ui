@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { useEffect } from "react";
 
 const bots: any[] = [
   { name: "bot1", color: "green" },
@@ -20,6 +21,13 @@ const bots: any[] = [
 ];
 
 const LandingPage = () => {
+  //use useEffect to call db and getting connections linked to auth user on
+  //supabase UID
+  //If no connection popup? you need to add a connection to use coinLiquidator
+  //if saveConnection = true -> saveConnection in DB & callStartBot(rpcUrl,privateKey);
+  //check if user has bots
+  //initiate bot cards if true and prepare functions
+  //
   const router = useRouter();
   const { isAuthenticated } = useAuth();
 
@@ -27,6 +35,7 @@ const LandingPage = () => {
     router.push("/login");
     return null;
   }
+
   return (
     <section className="min-h-[90svh] ">
       <MaxWidthWrapper>

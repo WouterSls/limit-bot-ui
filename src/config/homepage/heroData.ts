@@ -9,7 +9,7 @@ import { HeroDataInterface } from "@/models/interfaces/HeroDataInterface";
 export const heroData: HeroDataInterface = {
   heroTag: "Automate Your Exit Strategy",
   //subTag: "Software Solutions",
-  tagLine: "Lock in your gains at your ideal exit price",
+  tagLine: "Lock in your gains at your ideal selling price",
   button1: {
     link: "login",
     text: "Login",
