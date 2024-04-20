@@ -7,15 +7,16 @@ import { useRouter } from "next/navigation";
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbPage,
-  BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
+import { Plus } from "lucide-react";
 
 const bots: any[] = [
   { name: "bot1", color: "green" },
   { name: "bot2", color: "red" },
+  { name: "gene-usdc bot", color: "yellow" },
 ];
 
 const LandingPage = () => {
@@ -29,15 +30,18 @@ const LandingPage = () => {
   return (
     <section className="min-h-[90svh] ">
       <MaxWidthWrapper>
-        <nav>
+        <div className="my-20 flex flex-row justify-between">
           <Breadcrumb>
-            <BreadcrumbList className="text-6xl my-20">
+            <BreadcrumbList className="text-6xl">
               <BreadcrumbItem>
                 <BreadcrumbPage>Your Bots</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-        </nav>
+          <Button className="w-44">
+            <Plus className="mr-2"></Plus> Create Bot
+          </Button>
+        </div>
         <div className="grid grid-cols-3 gap-6">
           {bots.map((bot, index) => (
             <div key={index} className="col-span-1">

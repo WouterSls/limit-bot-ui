@@ -2,20 +2,27 @@ import React from "react";
 
 const BotInfo = () => {
   return (
-    <div>
-      <h3 className="text-3xl p-4"> Bot Info</h3>
-      <p>isUp</p>
-      <p>uptime</p>
-      <p>token</p>
-      <p>token price</p>
-      <p>sell price</p>
-      <p>trade succesful</p>
+    <div className="h-full border-2 border-gray-200 rounded-lg">
+      <div className="p-6">
+        <h2 className="text-lg font-semibold">Bot Info</h2>
+        <div className="grid grid-cols-2">
+          <div className="col-span-1">
+            <p>is up</p>
+            <p>up time</p>
+            <p>Connection info</p>
+          </div>
+          <div className="col-span-1">
+            <p>token</p>
+            <p>token price</p>
+            <p>sell price</p>
+          </div>
+        </div>
+      </div>
+
+      {/** 
       <p>Recent Trades</p>
-      <p>Bot uptime</p>
-      <p>Total Bots</p>
-      <p>Documentation</p>
-      <p>Getting started</p>
-      <p>Connection info</p>
+      <p>trade succesful</p>
+ */}
     </div>
   );
 };
