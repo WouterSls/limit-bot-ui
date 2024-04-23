@@ -21,6 +21,26 @@ const bots: any[] = [
 ];
 
 const LandingPage = () => {
+  useEffect(() => {
+    const getBotsForUser = async () => {
+      try {
+        const response = await fetch("/api/protected/bots", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        });
+
+        if (!response.ok) {
+          throw new Error("NOK response from server: " + response.statusText);
+        }
+        const data = await response.json();
+      } catch (error) {}
+    };
+  });
+
+  const router = useRouter();
+  const handleCreateBotClick = () => {
+    router.push("/dashboard/overview");
+  };
   //use useEffect to call db and getting connections linked to auth user on
   //supabase UID
   //If no connection popup? you need to add a connection to use coinLiquidator
@@ -28,7 +48,6 @@ const LandingPage = () => {
   //check if user has bots
   //initiate bot cards if true and prepare functions
   //
-  const router = useRouter();
   const { isAuthenticated } = useAuth();
 
   if (!isAuthenticated) {
@@ -47,7 +66,7 @@ const LandingPage = () => {
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
-          <Button className="w-44">
+          <Button className="w-44" onClick={handleCreateBotClick}>
             <Plus className="mr-2"></Plus> Create Bot
           </Button>
         </div>

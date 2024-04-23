@@ -2,7 +2,11 @@
 import React from "react";
 import { Button } from "../ui/button";
 
-const StartBotButton = () => {
+const StartBotButton = ({
+  setBotStatus,
+}: {
+  setBotStatus: (status: boolean | null) => void;
+}) => {
   const usdcAddress = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48";
   const body = {
     testAddress: usdcAddress,
@@ -21,6 +25,7 @@ const StartBotButton = () => {
 
       if (response.ok) {
         console.log("Bot started successfully");
+        setBotStatus(true);
       } else {
         console.error("Failed to start bot:", response.statusText);
       }

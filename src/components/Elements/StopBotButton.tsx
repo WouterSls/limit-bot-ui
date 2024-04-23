@@ -2,7 +2,11 @@
 import React from "react";
 import { Button } from "../ui/button";
 
-const StopBotButton = () => {
+const StopBotButton = ({
+  setBotStatus,
+}: {
+  setBotStatus: (status: boolean | null) => void;
+}) => {
   const body = {};
   const handleStopButtonClick = async () => {
     try {
@@ -16,6 +20,7 @@ const StopBotButton = () => {
 
       if (response.ok) {
         console.log("Bot stopped successfully");
+        setBotStatus(false);
       } else {
         console.error("Failed to stop bot:", response.statusText);
       }
