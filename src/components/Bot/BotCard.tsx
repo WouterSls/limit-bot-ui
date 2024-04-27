@@ -6,7 +6,7 @@ interface BotProps {
   botColor: string;
 }
 
-const BotCard: React.FC<BotProps> = ({ botName, botColor }) => {
+export const BotCard: React.FC<BotProps> = ({ botName, botColor }) => {
   return (
     <Link href={"/dashboard/overview"} className="">
       <div className="grid grid-rows-3 h-[30svh] hover:scale-105 transition-all ease duration-200">
@@ -22,5 +22,3 @@ const BotCard: React.FC<BotProps> = ({ botName, botColor }) => {
     </Link>
   );
 };
-
-export default BotCard;

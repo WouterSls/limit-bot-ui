@@ -1,7 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { useAuth } from "@/contexts/AuthContext";
 
 const BotStatus = () => {
+  const { authHeader } = useAuth();
+  if (!authHeader) {
+    return;
+  }
   const [botStatus, setBotStatus] = useState<boolean | null>(null); // Assuming the data structure
 
   useEffect(() => {
@@ -9,7 +14,7 @@ const BotStatus = () => {
       try {
         const response = await fetch("/api/protected/status", {
           method: "GET",
-          headers: { "Content-Type": "application/json" },
+          headers: authHeader,
         });
 
         if (!response.ok) {
@@ -18,6 +23,7 @@ const BotStatus = () => {
 
         const data = await response.json();
         //message, running
+        console.log(data);
         setBotStatus(data.running);
       } catch (error) {
         console.error("Error fetching bot status:", error);
@@ -33,12 +39,9 @@ const BotStatus = () => {
 
   return (
     <>
-      {/**
       <div>
         {botStatus ? <div>Bot is active</div> : <div>Bot is inactive</div>}
       </div>
-    */}
-      <div>{botStatus}</div>
     </>
   );
 };

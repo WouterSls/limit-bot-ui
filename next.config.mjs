@@ -10,7 +10,10 @@ const nextConfig = {
         source: "/api/protected/:path*",
         destination: `${API_URL}/api/protected/:path*`,
       },
-      { source: "/api/auth/:path*", destination: `${API_URL}/api/auth/:path*` },
+      {
+        source: "/api/authentication/:path*",
+        destination: `${API_URL}/api/authentication/:path*`,
+      },
     ];
   },
 };

@@ -1,7 +1,13 @@
 "use client";
 import { Button } from "../ui/button";
+import { useAuth } from "@/contexts/AuthContext";
 
 export const StartBotButton = () => {
+  const { authHeader } = useAuth();
+  if (!authHeader) {
+    return;
+  }
+
   const usdcAddress = "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48";
   const body = {
     testAddress: usdcAddress,
@@ -16,9 +22,7 @@ export const StartBotButton = () => {
       }
       const response = await fetch("/api/protected/startBot", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: authHeader,
         body: JSON.stringify(body),
       });
 
@@ -44,14 +48,17 @@ export const StartBotButton = () => {
 };
 
 export const StopBotButton = () => {
+  const { authHeader } = useAuth();
+  if (!authHeader) {
+    return;
+  }
+
   const body = {};
   const handleStopButtonClick = async () => {
     try {
       const response = await fetch("/api/protected/stopBot", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: authHeader,
         body: JSON.stringify(body),
       });
 
